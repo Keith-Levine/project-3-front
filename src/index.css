@@ -1,0 +1,20 @@
+/* table {
+    width: 400px;
+    border-collapse: collapse;
+    
+  }
+  table th {
+    text-align: left;
+    background-color: #3a6070;
+    color: #fff;
+    padding: 4px 8px 4px 8px;
+  }
+  table,
+  td {
+    border: 1px solid rgb(4, 0, 0);
+    padding: 4px 8px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: rgba(53, 119, 126, 0.267);
+  } */

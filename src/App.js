@@ -6,21 +6,21 @@ import EditMovie from './components/EditMovie'
 
 require('dotenv').config();
 
-let baseURL;
+let songURL;
 
 if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3003/songs/';
+  songURL = 'http://localhost:3003/songs/';
 } else {
-  baseURL = 'https://stormy-falls-96060.herokuapp.com/';
+  songURL = 'https://stormy-falls-96060.herokuapp.com/';
 }
 
-// let baseURL;
+let movieURL;
 
-// if (process.env.NODE_ENV === 'development') {
-//   baseURL = 'http://localhost:3003/movies/';
-// } else {
-//   baseURL = 'https://stormy-falls-96060.herokuapp.com/';
-// }
+if (process.env.NODE_ENV === 'development') {
+  movieURL = 'http://localhost:3003/movies/';
+} else {
+  movieURL = 'https://stormy-falls-96060.herokuapp.com/';
+}
 
 
 
@@ -60,13 +60,13 @@ export default class App extends Component {
 
   getMovie() {
     console.log('hello')
-    fetch(baseURL)
+    fetch(movieURL)
     .then(res => {return res.json()})
     .then(data => this.setState({movies: data}))
   }
 
   deleteMovie(id) {
-    fetch(baseURL + id, {
+    fetch(movieURL + id, {
       method: 'DELETE'
     })
       .then( res => {
@@ -101,15 +101,15 @@ export default class App extends Component {
   // }
 
   getSongs() {
-    console.log(baseURL)
-    fetch(baseURL)
+    console.log(songURL)
+    fetch(songURL)
     .then(res => {return res.json()})
     .then(data => {
       this.setState({songs: data})})
   }
 
   deleteSong(id) {
-    fetch(baseURL + id, {
+    fetch(songURL + id, {
       method: 'DELETE'
     })
       .then( res => {

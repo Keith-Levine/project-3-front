@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-const movieURL = 'http://localhost:3003/movies'
+let movieURL;
+
+if (process.env.NODE_ENV === 'development') {
+  movieURL = 'http://localhost:3003/movies/';
+} else {
+  movieURL = 'https://stormy-falls-96060.herokuapp.com/movies/';
+}
 
 export default class EditMovie extends Component {
     state = {

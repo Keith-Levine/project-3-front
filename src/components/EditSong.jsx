@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-const songURL = 'http://localhost:3003/songs'
+let songURL;
+
+if (process.env.NODE_ENV === 'development') {
+  songURL = 'http://localhost:3003/songs/';
+} else {
+  songURL = 'https://stormy-falls-96060.herokuapp.com/songs/';
+}
 
 export default class EditSong extends Component {
     state = {

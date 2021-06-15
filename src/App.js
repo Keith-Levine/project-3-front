@@ -49,12 +49,12 @@ export default class App extends Component {
   // }
 
 
-  getMovie() {
-    console.log('hello')
-    fetch(baseURL)
-    .then(res => {return res.json()})
-    .then(data => this.setState({movies: data}))
-  }
+  // getMovie() {
+  //   console.log('hello')
+  //   fetch(baseURL)
+  //   .then(res => {return res.json()})
+  //   .then(data => this.setState({movies: data}))
+  // }
 
   deleteMovie(id) {
     fetch(baseURL + id, {
@@ -78,7 +78,7 @@ export default class App extends Component {
 
   componentDidMount(){
     this.getSongs()
-    this.getMovie()
+    // this.getMovie()
   }
 
   // handleAddSong (song) {
@@ -90,6 +90,7 @@ export default class App extends Component {
   // }
 
   getSongs() {
+    console.log(baseURL)
     fetch(baseURL)
     .then(res => {return res.json()})
     .then(data => {

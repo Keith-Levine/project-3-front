@@ -121,7 +121,7 @@ export default class App extends Component {
         <EditMovie toggleEditMovie={this.toggleEditMovie} movie= {this.state.selectedMovie} />
       )
     } else {return (
-      <div>
+      <div className="body">
         <h1>My favorite things</h1>
         <h3>Favorite Songs</h3>
         <SongForm  getSongs={() => this.getSongs()}/>

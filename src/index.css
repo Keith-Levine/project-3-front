@@ -1,14 +1,15 @@
 table {
-  width: 400px;
+  width: 450px;
   border-collapse: collapse;
 }
 table th {
+  /* text-align:center; */
   background-color: #3a6070;
   color: #fff;
   padding: 4px 8px 4px 8px;
+  position: relative;
 }
-table,
-td {
+table td {
   border: 1px solid rgb(4, 0, 0);
   padding: 4px 8px;
 }
@@ -18,7 +19,7 @@ tr:nth-child(odd) {
 }
 
 th {
-  width: 40%;
+  width: 39%;
 }
 
 .body {
@@ -30,7 +31,7 @@ th {
 
   margin-top: 80px;
 
-  /* text-align: center; */
+
   position: relative;
 
   width: 66.5%;
@@ -41,6 +42,8 @@ th {
 
   box-shadow: 1px 1px 10px rgb(38, 41, 41), -1px -1px 10px rgb(33, 58, 54),
     1px -1px 10px rgb(121, 200, 228), -1px 1px 10px rgb(230, 225, 225);
+
+
 }
 
 body {

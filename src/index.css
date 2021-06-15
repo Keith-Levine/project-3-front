@@ -3,11 +3,11 @@ table {
   border-collapse: collapse;
 }
 table th {
-  /* text-align:center; */
+  text-align:left;
   background-color: #3a6070;
   color: #fff;
   padding: 4px 8px 4px 8px;
-  position: relative;
+  
 }
 table td {
   border: 1px solid rgb(4, 0, 0);
@@ -15,15 +15,15 @@ table td {
 }
 
 tr:nth-child(odd) {
-  background-color: rgba(53, 119, 126, 0.267);
+  background-color: rgba(63, 147, 157, 0.267);
 }
 
 th {
-  width: 39%;
+  width: 30%;
 }
 
 .body {
-  background-color: rgb(179, 204, 220);
+  background-color: rgb(173, 201, 218);
   margin: auto;
 
   font-family: rubik;
@@ -47,5 +47,5 @@ th {
 }
 
 body {
-  background-color: rgb(209, 218, 222);
+  background-color: rgb(116, 144, 155);
 }

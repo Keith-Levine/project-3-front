@@ -3,6 +3,7 @@ import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
 import EditSong from "./components/EditSong";
 import EditMovie from "./components/EditMovie";
+import { Table } from "react-bootstrap";
 
 const songURL = "http://localhost:3003/songs/";
 const movieURL = "http://localhost:3003/movies/";
@@ -137,12 +138,12 @@ export default class App extends Component {
     } else {
       return (
         <div className="body">
-          <h1>My favorite things</h1>
+          <h1>My Favorite Things</h1>
           <h3>Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />
           <br></br>
 
-          <table>
+          <Table striped>
             <tbody>
               <tr>
                 <th>Artist</th>
@@ -151,8 +152,7 @@ export default class App extends Component {
                 <th>Delete</th>
               </tr>
             </tbody>
-          </table>
-          <table>
+
             <tbody>
               {this.state.songs.map((song) => {
                 return (
@@ -173,24 +173,23 @@ export default class App extends Component {
                 );
               })}
             </tbody>
-          </table>
+          </Table>
           <h3>Favorite Movies</h3>
           <Movieform getMovie={() => this.getMovie()} />
           <br></br>
 
-          <table className="movies">
+          <Table striped>
             <tbody>
               <tr>
                 <th>Title</th>
-                <th>&nbsp;Year</th>
+                <th>Year</th>
                 <th>Director</th>
                 <th>Category</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </tbody>
-          </table>
-          <table>
+
             <tbody>
               {this.state.movies.map((movie) => {
                 return (
@@ -213,7 +212,7 @@ export default class App extends Component {
                 );
               })}
             </tbody>
-          </table>
+          </Table>
         </div>
       );
     }

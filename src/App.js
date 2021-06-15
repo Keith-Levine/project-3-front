@@ -1,12 +1,29 @@
-
 import React, { Component } from "react";
 import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
 import EditSong from './components/EditSong'
 
-const songURL = "http://localhost:3003/songs/"
-const movieURL = "http://localhost:3003/movies/"
+require('dotenv').config();
 
+let songURL;
+
+if (process.env.NODE_ENV === 'development') {
+  songURL = 'http://localhost:3003/songs/';
+} else {
+  songURL = 'https://stormy-falls-96060.herokuapp.com/';
+}
+
+let movieURL;
+
+if (process.env.NODE_ENV === 'development') {
+  movieURL = 'http://localhost:3003/movies/';
+} else {
+  movieURL = 'https://stormy-falls-96060.herokuapp.com/';
+}
+
+
+
+// = "http://localhost:3003/songs/"
 export default class App extends Component {
   constructor(props) {
     super(props);

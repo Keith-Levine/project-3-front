@@ -1,20 +1,48 @@
-/* table {
-    width: 400px;
-    border-collapse: collapse;
-    
-  }
-  table th {
-    text-align: left;
-    background-color: #3a6070;
-    color: #fff;
-    padding: 4px 8px 4px 8px;
-  }
-  table,
-  td {
-    border: 1px solid rgb(4, 0, 0);
-    padding: 4px 8px;
-  }
+table {
+  width: 400px;
+  border-collapse: collapse;
+}
+table th {
+  background-color: #3a6070;
+  color: #fff;
+  padding: 4px 8px 4px 8px;
+}
+table,
+td {
+  border: 1px solid rgb(4, 0, 0);
+  padding: 4px 8px;
+}
 
-  tr:nth-child(odd) {
-    background-color: rgba(53, 119, 126, 0.267);
-  } */
+tr:nth-child(odd) {
+  background-color: rgba(53, 119, 126, 0.267);
+}
+
+th {
+  width: 40%;
+}
+
+.body {
+  background-color: rgb(179, 204, 220);
+  margin: auto;
+
+  font-family: rubik;
+  color: rgb(1, 19, 21);
+
+  margin-top: 80px;
+
+  /* text-align: center; */
+  position: relative;
+
+  width: 66.5%;
+  height: auto;
+  object-fit: contain;
+  border: 3px solid rgb(0, 0, 0);
+  padding: 30px;
+
+  box-shadow: 1px 1px 10px rgb(38, 41, 41), -1px -1px 10px rgb(33, 58, 54),
+    1px -1px 10px rgb(121, 200, 228), -1px 1px 10px rgb(230, 225, 225);
+}
+
+body {
+  background-color: rgb(209, 218, 222);
+}

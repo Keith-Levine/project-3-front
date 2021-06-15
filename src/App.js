@@ -1,8 +1,8 @@
-
 import React, { Component } from "react";
 import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
 import EditSong from './components/EditSong'
+import EditMovie from './components/EditMovie'
 
 const songURL = "http://localhost:3003/songs/"
 const movieURL = "http://localhost:3003/movies/"
@@ -14,14 +14,22 @@ export default class App extends Component {
     this.state = {
       songs: [],
       movies: [],
-      showForm: false
+      showFormSong: false,
+      showFormMovie: false
     }
 
   }
 
-  //////////////
-  /// Movies
-  //////////////
+
+
+  componentDidMount(){
+    this.getSongs()
+    this.getMovie()
+  }
+
+  //////////////////////////
+  //////      Movies
+  /////////////////////////
 
   // handleAddMovie(movie) {
   //   const copyMovie = [...this.state.movies]
@@ -55,14 +63,17 @@ export default class App extends Component {
       })
   }
 
+
+  toggleEditMovie(movie) {
+    console.log('test')
+    this.setState({showFormMovie: !this.state.showFormMovie, selectedMovie: movie}, () => {this.getMovie()})
+  }
+
   /////////////////
   // SONGS CODE
   ////////////////
 
-  componentDidMount(){
-    this.getSongs()
-    this.getMovie()
-  }
+
 
   // handleAddSong (song) {
   //   const copySongs = [...this.state.songs]
@@ -95,15 +106,19 @@ export default class App extends Component {
       })
   }
 
-  toggleEdit(song) {
+  toggleEditSong(song) {
     console.log('test')
-    this.setState({showForm: !this.state.showForm, selectedSong: song}, () => {this.getSongs()})
+    this.setState({showFormSong: !this.state.showFormSong, selectedSong: song}, () => {this.getSongs()})
   }
 
   render() {
-    if(this.state.showForm) {
+    if(this.state.showFormSong) {
       return (
-        <EditSong toggleEdit={this.toggleEdit} song={this.state.selectedSong} />
+        <EditSong toggleEditSong={this.toggleEditSong} song={this.state.selectedSong} />
+      )
+    } else if (this.state.showFormMovie) {
+      return (
+        <EditMovie toggleEditMovie={this.toggleEditMovie} movie= {this.state.selectedMovie} />
       )
     } else {return (
       <div>
@@ -117,7 +132,7 @@ export default class App extends Component {
                   <tr key={song._id} >
                     <td>{song.artist}</td>
                     <td>{song.song}</td>
-                    <td><button onClick={() => this.toggleEdit(song)} >&#9997;</button></td>
+                    <td><button onClick={() => this.toggleEditSong(song)} >&#9997;</button></td>
                     <td><button onDoubleClick={() => this.deleteSong(song._id)}>&#128465;</button></td>
                   </tr>
               )
@@ -136,6 +151,7 @@ export default class App extends Component {
                   <td>{movie.year}</td>
                   <td>{movie.director}</td>
                   <td>{movie.category}</td>
+                  <td><button onClick={() => this.toggleEditMovie(movie)}>&#9997;</button></td>
                   <td><button onDoubleClick={() => this.deleteMovie(movie._id)}>&#128465;</button></td>
                 </tr>
               )
@@ -147,4 +163,3 @@ export default class App extends Component {
     
   }
 }
-

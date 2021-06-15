@@ -43,7 +43,7 @@ export default class EditMovie extends Component {
 
     render() {
         return (
-            <div>        
+            <div className="body">        
                 <form onSubmit={() => this.handleUpdateMovie()}>
                     <label htmlFor="title"></label>
                     <input 

@@ -124,7 +124,18 @@ export default class App extends Component {
       <div className="body">
         <h1>My favorite things</h1>
         <h3>Favorite Songs</h3>
-        <SongForm  getSongs={() => this.getSongs()}/>
+        <SongForm  getSongs={() => this.getSongs()}/><br></br>
+
+        <table>
+          <tbody>
+            <tr>
+              <th>Artist</th>
+              <th>Song Title</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </tbody>
+        </table>
         <table>
           <tbody>
             { this.state.songs.map(song => {
@@ -141,7 +152,20 @@ export default class App extends Component {
           </tbody>
         </table>
         <h3>Favorite Movies</h3>
-        <Movieform getMovie = { () => this.getMovie() } />
+        <Movieform getMovie = { () => this.getMovie() } /><br></br>
+
+        <table className={"movies"}>
+          <tbody>
+            <tr>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Director</th>
+              <th>Category</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </tbody>
+        </table>
         <table>
           <tbody>
             {this.state.movies.map(movie => {

@@ -6,7 +6,7 @@ let movieURL;
 if (process.env.NODE_ENV === 'development') {
   movieURL = 'http://localhost:3003/movies/';
 } else {
-  movieURL = 'https://stormy-falls-96060.herokuapp.com/movies/';
+  movieURL = 'https://stormy-falls-96060.herokuapp.com/';
 }
 
 export default class EditMovie extends Component {

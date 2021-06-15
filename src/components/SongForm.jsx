@@ -5,7 +5,7 @@ let songURL;
 if (process.env.NODE_ENV === 'development') {
   songURL = 'http://localhost:3003/songs/';
 } else {
-  songURL = 'https://stormy-falls-96060.herokuapp.com/songs/';
+  songURL = 'https://stormy-falls-96060.herokuapp.com/';
 }
 
 class SongForm extends Component {

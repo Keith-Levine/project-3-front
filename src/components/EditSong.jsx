@@ -57,7 +57,8 @@ export default class EditSong extends Component {
 
     render() {
         return (
-            <div className="body">        
+            <div className="body">  
+            <h1>Edit Favorite Song</h1>      
                 <form onSubmit={() => this.handleUpdateSong()}>
                     <label htmlFor="artist"></label>
                     <input 
@@ -76,7 +77,8 @@ export default class EditSong extends Component {
                         placeholder = 'Add Song'
                     />
                     <input type="submit" value="Update Song"/>
-                </form>              
+                </form>
+                              
             </div>
         )
     }

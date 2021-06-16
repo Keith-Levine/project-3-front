@@ -122,7 +122,7 @@ export default class App extends Component {
       )
     } else {return (
       <div className="body">
-        <h1>My favorite things</h1>
+        <h1>My Favorite Things</h1>
         <h3>Favorite Songs</h3>
         <SongForm  getSongs={() => this.getSongs()}/><br></br>
 

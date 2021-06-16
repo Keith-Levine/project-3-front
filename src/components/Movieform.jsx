@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 
-const movieURL = "http://localhost:3003/movies";
+let movieURL;
+
+if (process.env.NODE_ENV === 'development') {
+  movieURL = 'http://localhost:3003/movies/';
+} else {
+  movieURL = 'https://stormy-falls-96060.herokuapp.com/movies/';
+};
 
 
 export default class Movieform extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       title: "",
       year: 0,
@@ -15,6 +22,7 @@ export default class Movieform extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange(event) {
     this.setState({ [event.currentTarget.id]: event.currentTarget.value });
   }
@@ -92,5 +100,5 @@ export default class Movieform extends Component {
         </form>
       </div>
     );
-  }
-}
+  };
+};

@@ -63,7 +63,7 @@ export default class EditSong extends Component {
 
     render() {
         return (
-            <div>        
+            <div className="body">        
                 <form onSubmit={() => this.handleUpdateSong()}>
                     <label htmlFor="artist"></label>
                     <input 

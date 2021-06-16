@@ -36,7 +36,7 @@ export default class Movieform extends Component {
             this.props.getMovie()
             this.setState({
               title: '',
-              year: 0,
+              year: '',
               director: '',
               category: ''
             })

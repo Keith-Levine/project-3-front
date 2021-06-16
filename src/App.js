@@ -151,9 +151,7 @@ export default class App extends Component {
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
-            </tbody>
-
-            <tbody>
+            
               {this.state.songs.map((song) => {
                 return (
                   <tr key={song._id}>
@@ -188,9 +186,7 @@ export default class App extends Component {
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
-            </tbody>
-
-            <tbody>
+            
               {this.state.movies.map((movie) => {
                 return (
                   <tr key={movie._id}>

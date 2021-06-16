@@ -43,7 +43,7 @@ export default class Song extends Component {
                     <button onClick={() => this.toggleAddLike(this.props.song._id)}>
                         &#128077;
                     </button>
-                    {this.state.likes}
+                    &nbsp;&nbsp;&nbsp;{this.state.likes}
                 </td>
                 <td>
                     <button onClick={(song) => this.toggleEditSong(this.props.song._id)}>

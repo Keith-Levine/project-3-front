@@ -3,7 +3,7 @@ import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
 import EditSong from './components/EditSong'
 import EditMovie from './components/EditMovie'
-import Axios from 'axios'
+// import Axios from 'axios'
 
 require('dotenv').config();
 
@@ -101,20 +101,20 @@ export default class App extends Component {
   //   })
   // }
 
-  getSongs = async () => {
-    // console.log(songURL)
-    // fetch(songURL)
-    // .then(res => {return res.json()})
-    // .then(data => {
-    //   this.setState({songs: data})})
-      const headers = {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': 'true'
-    }
-    await Axios.get(
-        songURL, {headers: headers})
-        .then(res => {console.log(res)})
-        .catch(e => console.log(e))
+  getSongs() {
+    console.log(songURL)
+    fetch(songURL)
+    .then(res => {return res.json()})
+    .then(data => {
+      this.setState({songs: data})})
+    //   const headers = {
+    //     "Content-Type": "application/json",
+    //     'Access-Control-Allow-Origin': 'true'
+    // }
+    // await Axios.get(
+    //     songURL, {headers: headers})
+    //     .then(res => {console.log(res)})
+    //     .catch(e => console.log(e))
   }
 
   deleteSong(id) {

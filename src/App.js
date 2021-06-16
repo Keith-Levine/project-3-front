@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
+import SearchMovie from './components/SearchMoive'
 import { Table } from "react-bootstrap";
 import Song from "./components/Song";
 import Movie from "./components/Movie";
 
 
+require('dotenv').config();
+
 const songURL = "http://localhost:3003/songs/";
 const movieURL = "http://localhost:3003/movies/";
+// const OMDBApiKey = process.env.OMDB_API_KEY;
+// console.log(OMDBApiKey)
+// console.log(process.env)
+
 
 export default class App extends Component {
   constructor(props) {
@@ -38,7 +45,6 @@ export default class App extends Component {
   // }
 
   getMovie() {
-    console.log("hello");
     fetch(movieURL)
       .then((res) => {
         return res.json();
@@ -119,6 +125,9 @@ export default class App extends Component {
       return (
         <div className="body" >
           <h1>My Favorite Things</h1>
+          <h3>Overview
+              <p>Keep track of your favorite Songs and Movies with (APP NAME)</p>
+          </h3>
           <h3>Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />
           <br></br>
@@ -147,7 +156,9 @@ export default class App extends Component {
               })}
             </tbody>
           </Table>
-          <h3>Favorite Movies</h3>
+          <h3>Search For Movie</h3>
+          <SearchMovie />
+          <h3>Add Favorite Movies</h3>
           <Movieform getMovie={() => this.getMovie()} />
           <br></br>
 

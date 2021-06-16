@@ -1,28 +1,38 @@
 import React, { Component } from "react";
 import Axios from "axios";
 
-const songURL = "http://localhost:3003/songs";
+let songURL;
+
+if (process.env.NODE_ENV === 'development') {
+  songURL = 'http://localhost:3003/songs/';
+} else {
+  songURL = 'https://stormy-falls-96060.herokuapp.com/songs/';
+};
 
 export default class EditSong extends Component {
   state = {
     artist: "",
     song: "",
+    likes: this.props.song.likes
   };
 
   handleChange(event) {
     this.setState({ [event.currentTarget.id]: event.currentTarget.value });
-  }
+  };
+
   componentDidMount() {
     this.setState({
       artist: this.props.song.artist,
       song: this.props.song.song,
+      likes: this.props.song.likes
     });
-  }
+  };
 
   handleUpdateSong = async (id) => {
     const payLoad = {
       artist: this.state.artist,
       song: this.state.song,
+      likes: this.props.song.likes
     };
     const headers = {
       "Content-Type": "application/json",
@@ -38,7 +48,6 @@ export default class EditSong extends Component {
 
   render() {
     return (
-      
       <div className="body">
         <form onSubmit={() => this.handleUpdateSong()}>
           <label htmlFor="artist"></label>

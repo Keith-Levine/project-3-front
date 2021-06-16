@@ -1,59 +1,65 @@
-import React, { Component } from 'react'
-import Axios from 'axios'
+import React, { Component } from "react";
+import Axios from "axios";
 
-const songURL = 'http://localhost:3003/songs'
+const songURL = "http://localhost:3003/songs";
 
 export default class EditSong extends Component {
-    state = {
-        artist: '',
-        song: ''
-    }
+  state = {
+    artist: "",
+    song: "",
+  };
 
-    handleChange (event) {
-        this.setState({ [event.currentTarget.id]: event.currentTarget.value})
-    }
-    componentDidMount() {
-        this.setState({artist: this.props.song.artist, song: this.props.song.song})
-    }
+  handleChange(event) {
+    this.setState({ [event.currentTarget.id]: event.currentTarget.value });
+  }
+  componentDidMount() {
+    this.setState({
+      artist: this.props.song.artist,
+      song: this.props.song.song,
+    });
+  }
 
-    handleUpdateSong=async(id) => {
-        const payLoad = {
-            artist: this.state.artist,
-            song: this.state.song,
-        }
-        const headers = {
-            "Content-Type": "application/json"
-        }
-        const songId = this.props.song._id
-        console.log(songId)
-        await Axios.put(
-            songURL + `/${songId}`, payLoad, {headers: headers})
-            .then(res => {console.log(res)})
-    }
+  handleUpdateSong = async (id) => {
+    const payLoad = {
+      artist: this.state.artist,
+      song: this.state.song,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    const songId = this.props.song._id;
+    console.log(songId);
+    await Axios.put(songURL + `/${songId}`, payLoad, { headers: headers }).then(
+      (res) => {
+        console.log(res);
+      }
+    );
+  };
 
-    render() {
-        return (
-            <div className="songform">        
-                <form onSubmit={() => this.handleUpdateSong()}>
-                    <label htmlFor="artist"></label>
-                    <input 
-                        type="text"
-                        id="artist"
-                        defaultValue = {this.props.song.artist}
-                        onChange={(event) => this.handleChange(event)}
-                        placeholder = 'Add Artist'
-                    />
-                    <label htmlFor="song"></label>
-                    <input 
-                        type="text"
-                        id="song" 
-                        defaultValue = {this.props.song.song}
-                        onChange={(event) => this.handleChange(event)}
-                        placeholder = 'Add Song'
-                    />
-                    <input type="submit" value="Update Song"/>
-                </form>              
-            </div>
-        )
-    }
+  render() {
+    return (
+      
+      <div className="body">
+        <form onSubmit={() => this.handleUpdateSong()}>
+          <label htmlFor="artist"></label>
+          <input
+            type="text"
+            id="artist"
+            defaultValue={this.props.song.artist}
+            onChange={(event) => this.handleChange(event)}
+            placeholder="Add Artist"
+          />
+          <label htmlFor="song"></label>
+          <input
+            type="text"
+            id="song"
+            defaultValue={this.props.song.song}
+            onChange={(event) => this.handleChange(event)}
+            placeholder="Add Song"
+          />
+          <input type="submit" value="Update Song" />
+        </form>
+      </div>
+    )
+  }
 }

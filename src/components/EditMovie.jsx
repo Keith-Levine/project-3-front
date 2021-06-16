@@ -45,6 +45,7 @@ export default class EditMovie extends Component {
   render() {
     return (
       <div className="body">
+        <h1>Edit Favorite Movie</h1>   
         <form onSubmit={() => this.handleUpdateMovie()}>
           <label htmlFor="title"></label>
           <input

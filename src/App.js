@@ -5,6 +5,7 @@ import { Table } from "react-bootstrap";
 import Song from "./components/Song";
 import Movie from "./components/Movie";
 
+
 const songURL = "http://localhost:3003/songs/";
 const movieURL = "http://localhost:3003/movies/";
 
@@ -116,17 +117,18 @@ export default class App extends Component {
     //   );
     // } else {
       return (
-        <div className="body">
+        <div className="body" >
           <h1>My Favorite Things</h1>
           <h3>Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />
           <br></br>
 
-          <Table striped>
+          <Table striped bordered hover size="sm" >
             <tbody>
               <tr>
                 <th>Artist</th>
                 <th>Song Title</th>
+                <th>Like</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -149,13 +151,14 @@ export default class App extends Component {
           <Movieform getMovie={() => this.getMovie()} />
           <br></br>
 
-          <Table striped>
-            <tbody>
+          <Table striped bordered hover size="sm">
+            <tbody >
               <tr>
                 <th>Title</th>
                 <th>Year</th>
                 <th>Director</th>
                 <th>Category</th>
+                <th>Like</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>

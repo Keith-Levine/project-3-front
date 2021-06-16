@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
-// import EditMovie from "./components/EditMovie";
 import { Table } from "react-bootstrap";
 import Song from "./components/Song";
+import Movie from "./components/Movie";
 
 const songURL = "http://localhost:3003/songs/";
 const movieURL = "http://localhost:3003/movies/";
@@ -60,16 +60,6 @@ export default class App extends Component {
         });
       }
     });
-  }
-
-  toggleEditMovie(movie) {
-    console.log("test");
-    this.setState(
-      { showFormMovie: !this.state.showFormMovie, selectedMovie: movie },
-      () => {
-        this.getMovie();
-      }
-    );
   }
 
   /////////////////
@@ -172,22 +162,14 @@ export default class App extends Component {
             
               {this.state.movies.map((movie) => {
                 return (
-                  <tr key={movie._id}>
-                    <td>{movie.title}</td>
-                    <td>{movie.year}</td>
-                    <td>{movie.director}</td>
-                    <td>{movie.category}</td>
-                    <td>
-                      <button onClick={() => this.toggleEditMovie(movie)}>
-                        &#9997;
-                      </button>
-                    </td>
-                    <td>
-                      <button onDoubleClick={() => this.deleteMovie(movie._id)}>
-                        &#128465;
-                      </button>
-                    </td>
-                  </tr>
+                  <Movie
+                  movie={movie}
+                  selectedMovie={this.state.selectedMovie}  
+                  toggleEditMovie={(movie) => this.toggleEditMovie(movie)}
+                  getMovie={() => this.getMovie} 
+                  deleteMovie={(id) => this.deleteMovie(id)} 
+                  showFormMovie={this.state.showFormMovie}
+                  />
                 );
               })}
             </tbody>

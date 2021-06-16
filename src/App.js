@@ -98,9 +98,9 @@ export default class App extends Component {
   render() {
       return (
         <div className="body" >
-          <h1>My Favorite Things</h1>
-          <h3>Overview
-              <p>Keep track of your favorite Songs and Movies with (APP NAME)</p>
+          <h1>Our Favorite SH★★★★☆T</h1>
+          <h3>
+              <p>Keep track of your favorite SH★★★★☆T</p>
           </h3>
           <h3>Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />

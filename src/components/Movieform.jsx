@@ -59,7 +59,7 @@ export default class Movieform extends Component {
                 ></input>
                 <label htmlFor="year"></label>
                 <input
-                    type="number" 
+                    type="text" 
                     id="year" name="year" 
                     onChange={this.handleChange} 
                     placeholder = 'Add Year'

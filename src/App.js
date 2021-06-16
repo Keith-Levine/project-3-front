@@ -8,7 +8,6 @@ import Movie from "./components/Movie";
 require('dotenv').config();
 
 
-
 let songURL;
 
 if (process.env.NODE_ENV === 'development') {
@@ -149,17 +148,18 @@ export default class App extends Component {
     //   );
     // } else {
       return (
-        <div className="body">
+        <div className="body" >
           <h1>My Favorite Things</h1>
           <h3>Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />
           <br></br>
 
-          <Table striped>
+          <Table striped bordered hover size="sm" >
             <tbody>
               <tr>
                 <th>Artist</th>
                 <th>Song Title</th>
+                <th>Like</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -182,13 +182,14 @@ export default class App extends Component {
           <Movieform getMovie={() => this.getMovie()} />
           <br></br>
 
-          <Table striped>
-            <tbody>
+          <Table striped bordered hover size="sm">
+            <tbody >
               <tr>
                 <th>Title</th>
                 <th>Year</th>
                 <th>Director</th>
                 <th>Category</th>
+                <th>Like</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>

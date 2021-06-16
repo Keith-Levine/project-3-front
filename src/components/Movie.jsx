@@ -45,7 +45,7 @@ export default class Movie extends Component {
                     <button onClick={() => this.toggleAddLike(this.props.movie._id)}>
                         &#128077;
                     </button>
-                    {this.state.likes}
+                    &nbsp;&nbsp;&nbsp;{this.state.likes}
                 </td>
                 <td>
                     <button onClick={(movie) => this.toggleEditMovie(this.props.movie._id)}>

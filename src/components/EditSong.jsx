@@ -19,7 +19,7 @@ export default class EditSong extends Component {
     handleUpdateSong=async(id) => {
         const payLoad = {
             artist: this.state.artist,
-            song: this.state.song
+            song: this.state.song,
         }
         const headers = {
             "Content-Type": "application/json"
@@ -29,35 +29,11 @@ export default class EditSong extends Component {
         await Axios.put(
             songURL + `/${songId}`, payLoad, {headers: headers})
             .then(res => {console.log(res)})
-
-        // fetch(`${songURL}/${this.props.song._id}`, {
-        //     method: 'PUT',
-        //     headers: {
-        //       'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         artist: this.props.song.artist, 
-        //         song: this.props.song.song
-        //     })
-        //   })
-        //     .then(res => console.log(res.json()))
-            // .then(resJson => {
-            //   this.updateSong(resJson)
-            // })
-            // .then(this.props.toggleEdit)
     }
-
-
-    // updateSong(resJson) {
-    //     const copySong = [...this.props.song]
-    //     const findIndex = this.props.song.findIndex(song => song._id === resJson._id)
-    //     copySong.splice(findIndex, 1)
-    //     this.setState({findIndex: resJson})  
-    // }
 
     render() {
         return (
-            <div className="body">        
+            <div className="songform">        
                 <form onSubmit={() => this.handleUpdateSong()}>
                     <label htmlFor="artist"></label>
                     <input 

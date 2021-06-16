@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
-import EditSong from "./components/EditSong";
-import EditMovie from "./components/EditMovie";
+// import EditMovie from "./components/EditMovie";
 import { Table } from "react-bootstrap";
+import Song from "./components/Song";
 
 const songURL = "http://localhost:3003/songs/";
 const movieURL = "http://localhost:3003/movies/";
@@ -15,7 +15,6 @@ export default class App extends Component {
     this.state = {
       songs: [],
       movies: [],
-      showFormSong: false,
       showFormMovie: false,
     };
   }
@@ -110,32 +109,22 @@ export default class App extends Component {
     });
   }
 
-  toggleEditSong(song) {
-    console.log("test");
-    this.setState(
-      { showFormSong: !this.state.showFormSong, selectedSong: song },
-      () => {
-        this.getSongs();
-      }
-    );
-  }
-
   render() {
-    if (this.state.showFormSong) {
-      return (
-        <EditSong
-          toggleEditSong={this.toggleEditSong}
-          song={this.state.selectedSong}
-        />
-      );
-    } else if (this.state.showFormMovie) {
-      return (
-        <EditMovie
-          toggleEditMovie={this.toggleEditMovie}
-          movie={this.state.selectedMovie}
-        />
-      );
-    } else {
+    // if (this.state.showFormSong) {
+    //   return (
+    //     <EditSong
+    //       toggleEditSong={this.toggleEditSong}
+    //       song={this.state.selectedSong}
+    //     />
+    //   );
+    // } else if (this.state.showFormMovie) {
+    //   return (
+    //     <EditMovie
+    //       toggleEditMovie={this.toggleEditMovie}
+    //       movie={this.state.selectedMovie}
+    //     />
+    //   );
+    // } else {
       return (
         <div className="body">
           <h1>My Favorite Things</h1>
@@ -152,22 +141,16 @@ export default class App extends Component {
                 <th>Delete</th>
               </tr>
             
-              {this.state.songs.map((song) => {
+              {this.state.songs.map((song, id) => {
                 return (
-                  <tr key={song._id}>
-                    <td>{song.artist}</td>
-                    <td>{song.song}</td>
-                    <td>
-                      <button onClick={() => this.toggleEditSong(song)}>
-                        &#9997;
-                      </button>
-                    </td>
-                    <td>
-                      <button onDoubleClick={() => this.deleteSong(song._id)}>
-                        &#128465;
-                      </button>
-                    </td>
-                  </tr>
+                  <Song 
+                  song={song}
+                  selectedSong={this.state.selectedSong}
+                  key={id} 
+                  toggleEditSong={(song) => this.toggleEditSong(song)}
+                  getSongs={() => this.getSongs} 
+                  deleteSong={(id) => this.deleteSong(id)} 
+                  showFormSong={this.state.showFormSong}/>
                 );
               })}
             </tbody>
@@ -213,4 +196,4 @@ export default class App extends Component {
       );
     }
   }
-}
+// }

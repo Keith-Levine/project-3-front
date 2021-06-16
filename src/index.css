@@ -3,11 +3,10 @@
   border-collapse: collapse;
 } */
 table th {
-  text-align:left;
+  text-align: left;
   background-color: #2282b6;
   color: #fff;
   padding: 4px 8px 4px 8px;
-  
 }
 table td {
   border: 1px solid rgb(5, 0, 0);
@@ -23,27 +22,24 @@ tr:nth-child(even) {
 } */
 
 .body {
-  background-color: rgb(177, 205, 216);
+  background-color: rgb(147, 190, 206);
   margin: auto;
 
   font-family: rubik;
   color: rgb(1, 19, 21);
 
-  margin-top: 80px;
+  margin-top: 50px;
 
+  /* position: relative; */
 
-  position: relative;
-
-  width: 95%;
+  width: 90%;
   height: auto;
-  object-fit: contain;
+  /* object-fit: contain; */
   border: 3px solid rgb(0, 0, 0);
   padding: 30px;
 
   box-shadow: 1px 1px 10px rgb(38, 41, 41), -1px -1px 10px rgb(33, 58, 54),
     1px -1px 10px rgb(121, 200, 228), -1px 1px 10px rgb(230, 225, 225);
-
-
 }
 
 body {

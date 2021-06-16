@@ -128,7 +128,7 @@ export default class App extends Component {
           <h3>Overview
               <p>Keep track of your favorite Songs and Movies with (APP NAME)</p>
           </h3>
-          <h3>Favorite Songs</h3>
+          <h3>Add Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />
           <br></br>
 
@@ -156,7 +156,7 @@ export default class App extends Component {
               })}
             </tbody>
           </Table>
-          <h3>Search For Movie</h3>
+          <h4>Search For Movie</h4>
           <SearchMovie />
           <h3>Add Favorite Movies</h3>
           <Movieform getMovie={() => this.getMovie()} />

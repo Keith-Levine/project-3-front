@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import MovieInfo from './MovieInfo'
 require('dotenv').config()
 
-const OMDBApiKey = process.env.REACT_APP_OMDB_API_KEY;
+const OMDBApiKey = 'a6e0eb04';
 
 
 class SearchMovie extends Component {
@@ -55,7 +55,7 @@ class SearchMovie extends Component {
                     type='submit'
                     value='Find Movie Info'
                 />
-                </form>
+                </form><br></br>
                 {
                 (this.state.movie) ? <MovieInfo movie={this.state.movie}/> : ''
                 }

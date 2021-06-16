@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
-import EditSong from "./components/EditSong";
-import EditMovie from "./components/EditMovie";
 import SearchMovie from './components/SearchMoive'
 import { Table } from "react-bootstrap";
+import Song from "./components/Song";
+import Movie from "./components/Movie";
+
 
 require('dotenv').config();
 
@@ -22,7 +23,6 @@ export default class App extends Component {
     this.state = {
       songs: [],
       movies: [],
-      showFormSong: false,
       showFormMovie: false,
     };
   }
@@ -69,16 +69,6 @@ export default class App extends Component {
     });
   }
 
-  toggleEditMovie(movie) {
-    console.log("test");
-    this.setState(
-      { showFormMovie: !this.state.showFormMovie, selectedMovie: movie },
-      () => {
-        this.getMovie();
-      }
-    );
-  }
-
   /////////////////
   // SONGS CODE
   ////////////////
@@ -116,64 +106,52 @@ export default class App extends Component {
     });
   }
 
-  toggleEditSong(song) {
-    console.log("test");
-    this.setState(
-      { showFormSong: !this.state.showFormSong, selectedSong: song },
-      () => {
-        this.getSongs();
-      }
-    );
-  }
-
   render() {
-    if (this.state.showFormSong) {
+    // if (this.state.showFormSong) {
+    //   return (
+    //     <EditSong
+    //       toggleEditSong={this.toggleEditSong}
+    //       song={this.state.selectedSong}
+    //     />
+    //   );
+    // } else if (this.state.showFormMovie) {
+    //   return (
+    //     <EditMovie
+    //       toggleEditMovie={this.toggleEditMovie}
+    //       movie={this.state.selectedMovie}
+    //     />
+    //   );
+    // } else {
       return (
-        <EditSong
-          toggleEditSong={this.toggleEditSong}
-          song={this.state.selectedSong}
-        />
-      );
-    } else if (this.state.showFormMovie) {
-      return (
-        <EditMovie
-          toggleEditMovie={this.toggleEditMovie}
-          movie={this.state.selectedMovie}
-        />
-      );
-    } else {
-      return (
-        <div className="body">
+        <div className="body" >
           <h1>My Favorite Things</h1>
+          <h3>Overview
+              <p>Keep track of your favorite Songs and Movies with (APP NAME)</p>
+          </h3>
           <h3>Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />
           <br></br>
 
-          <Table striped>
+          <Table striped bordered hover size="sm" >
             <tbody>
               <tr>
                 <th>Artist</th>
                 <th>Song Title</th>
+                <th>Like</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             
-              {this.state.songs.map((song) => {
+              {this.state.songs.map((song, id) => {
                 return (
-                  <tr key={song._id}>
-                    <td>{song.artist}</td>
-                    <td>{song.song}</td>
-                    <td>
-                      <button onClick={() => this.toggleEditSong(song)}>
-                        &#9997;
-                      </button>
-                    </td>
-                    <td>
-                      <button onDoubleClick={() => this.deleteSong(song._id)}>
-                        &#128465;
-                      </button>
-                    </td>
-                  </tr>
+                  <Song 
+                  song={song}
+                  selectedSong={this.state.selectedSong}
+                  key={id} 
+                  toggleEditSong={(song) => this.toggleEditSong(song)}
+                  getSongs={() => this.getSongs} 
+                  deleteSong={(id) => this.deleteSong(id)} 
+                  showFormSong={this.state.showFormSong}/>
                 );
               })}
             </tbody>
@@ -184,35 +162,28 @@ export default class App extends Component {
           <Movieform getMovie={() => this.getMovie()} />
           <br></br>
 
-          <Table striped>
-            <tbody>
+          <Table striped bordered hover size="sm">
+            <tbody >
               <tr>
                 <th>Title</th>
                 <th>Year</th>
                 <th>Director</th>
                 <th>Category</th>
+                <th>Like</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             
               {this.state.movies.map((movie) => {
                 return (
-                  <tr key={movie._id}>
-                    <td>{movie.title}</td>
-                    <td>{movie.year}</td>
-                    <td>{movie.director}</td>
-                    <td>{movie.category}</td>
-                    <td>
-                      <button onClick={() => this.toggleEditMovie(movie)}>
-                        &#9997;
-                      </button>
-                    </td>
-                    <td>
-                      <button onDoubleClick={() => this.deleteMovie(movie._id)}>
-                        &#128465;
-                      </button>
-                    </td>
-                  </tr>
+                  <Movie
+                  movie={movie}
+                  selectedMovie={this.state.selectedMovie}  
+                  toggleEditMovie={(movie) => this.toggleEditMovie(movie)}
+                  getMovie={() => this.getMovie} 
+                  deleteMovie={(id) => this.deleteMovie(id)} 
+                  showFormMovie={this.state.showFormMovie}
+                  />
                 );
               })}
             </tbody>
@@ -221,4 +192,4 @@ export default class App extends Component {
       );
     }
   }
-}
+// }

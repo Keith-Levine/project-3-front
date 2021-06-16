@@ -124,10 +124,8 @@ export default class App extends Component {
     // } else {
       return (
         <div className="body" >
-          <h1>My Favorite Things</h1>
-          <h3>Overview
-              <p>Keep track of your favorite Songs and Movies with (APP NAME)</p>
-          </h3>
+          <h1>Your Favorite SH★★★★☆T</h1>
+          <h3>A place to keep track of your favorite Songs and Movies </h3>
           <h3>Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />
           <br></br>
@@ -174,9 +172,10 @@ export default class App extends Component {
                 <th>Delete</th>
               </tr>
             
-              {this.state.movies.map((movie) => {
+              {this.state.movies.map((movie, id) => {
                 return (
                   <Movie
+                  key = {id}
                   movie={movie}
                   selectedMovie={this.state.selectedMovie}  
                   toggleEditMovie={(movie) => this.toggleEditMovie(movie)}

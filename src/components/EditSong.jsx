@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'development') {
   songURL = 'http://localhost:3003/songs/';
 } else {
   songURL = 'https://stormy-falls-96060.herokuapp.com/songs/';
-}
+};
 
 export default class EditSong extends Component {
   state = {
@@ -18,14 +18,15 @@ export default class EditSong extends Component {
 
   handleChange(event) {
     this.setState({ [event.currentTarget.id]: event.currentTarget.value });
-  }
+  };
+
   componentDidMount() {
     this.setState({
       artist: this.props.song.artist,
       song: this.props.song.song,
       likes: this.props.song.likes
     });
-  }
+  };
 
   handleUpdateSong = async (id) => {
     const payLoad = {
@@ -47,7 +48,6 @@ export default class EditSong extends Component {
 
   render() {
     return (
-      
       <div className="body">
         <form onSubmit={() => this.handleUpdateSong()}>
           <label htmlFor="artist"></label>

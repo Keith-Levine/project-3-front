@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'development') {
   songURL = 'http://localhost:3003/songs/';
 } else {
   songURL = 'https://stormy-falls-96060.herokuapp.com/songs/';
-}
+};
 
 class SongForm extends Component {
     constructor(pros){
@@ -16,11 +16,9 @@ class SongForm extends Component {
             artist: '',
             song: '',
         }
-
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
 
     handleChange(event) {
         this.setState({[event.currentTarget.id] : event.currentTarget.value})
@@ -73,7 +71,7 @@ class SongForm extends Component {
                 </form>
             </div>
          );
-    }
-}
+    };
+};
  
 export default SongForm;

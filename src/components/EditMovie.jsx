@@ -7,8 +7,7 @@ if (process.env.NODE_ENV === 'development') {
   movieURL = 'http://localhost:3003/movies/';
 } else {
   movieURL = 'https://stormy-falls-96060.herokuapp.com/movies/';
-}
-
+};
 
 export default class EditMovie extends Component {
   state = {
@@ -20,7 +19,8 @@ export default class EditMovie extends Component {
 
   handleChange(event) {
     this.setState({ [event.currentTarget.id]: event.currentTarget.value });
-  }
+  };
+
   componentDidMount() {
     this.setState({
       title: this.props.movie.title,
@@ -28,7 +28,7 @@ export default class EditMovie extends Component {
       director: this.props.movie.director,
       category: this.props.movie.category,
     });
-  }
+  };
 
   handleUpdateMovie = async (id) => {
     const payLoad = {
@@ -90,5 +90,5 @@ export default class EditMovie extends Component {
         </form>
       </div>
     );
-  }
-}
+  };
+};

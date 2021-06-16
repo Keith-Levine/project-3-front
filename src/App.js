@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 import Movieform from "./components/Movieform";
 import SongForm from "./components/SongForm";
-import EditSong from './components/EditSong'
-import EditMovie from './components/EditMovie'
+import EditSong from "./components/EditSong";
+import EditMovie from "./components/EditMovie";
+import SearchMovie from './components/SearchMoive'
+import { Table } from "react-bootstrap";
 
-const songURL = "http://localhost:3003/songs/"
-const movieURL = "http://localhost:3003/movies/"
+require('dotenv').config();
+
+const songURL = "http://localhost:3003/songs/";
+const movieURL = "http://localhost:3003/movies/";
+// const OMDBApiKey = process.env.OMDB_API_KEY;
+// console.log(OMDBApiKey)
+// console.log(process.env)
+
 
 export default class App extends Component {
   constructor(props) {
@@ -15,16 +23,13 @@ export default class App extends Component {
       songs: [],
       movies: [],
       showFormSong: false,
-      showFormMovie: false
-    }
-
+      showFormMovie: false,
+    };
   }
 
-
-
-  componentDidMount(){
-    this.getSongs()
-    this.getMovie()
+  componentDidMount() {
+    this.getSongs();
+    this.getMovie();
   }
 
   //////////////////////////
@@ -39,41 +44,44 @@ export default class App extends Component {
   //   })
   // }
 
-
   getMovie() {
-    console.log('hello')
     fetch(movieURL)
-    .then(res => {return res.json()})
-    .then(data => this.setState({movies: data}))
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => this.setState({ movies: data }));
   }
 
   deleteMovie(id) {
     fetch(movieURL + id, {
-      method: 'DELETE'
-    })
-      .then( res => {
-        if(res.status === 200) {
-          const findIndex = this.state.movies.findIndex(movie => movie._id === id)
-          const copyMovies = [...this.state.movies]
-          copyMovies.splice(findIndex, 1)
-          this.setState({
-            movies: copyMovies
-          })
-        }
-      })
+      method: "DELETE",
+    }).then((res) => {
+      if (res.status === 200) {
+        const findIndex = this.state.movies.findIndex(
+          (movie) => movie._id === id
+        );
+        const copyMovies = [...this.state.movies];
+        copyMovies.splice(findIndex, 1);
+        this.setState({
+          movies: copyMovies,
+        });
+      }
+    });
   }
 
-
   toggleEditMovie(movie) {
-    console.log('test')
-    this.setState({showFormMovie: !this.state.showFormMovie, selectedMovie: movie}, () => {this.getMovie()})
+    console.log("test");
+    this.setState(
+      { showFormMovie: !this.state.showFormMovie, selectedMovie: movie },
+      () => {
+        this.getMovie();
+      }
+    );
   }
 
   /////////////////
   // SONGS CODE
   ////////////////
-
-
 
   // handleAddSong (song) {
   //   const copySongs = [...this.state.songs]
@@ -85,81 +93,132 @@ export default class App extends Component {
 
   getSongs() {
     fetch(songURL)
-    .then(res => {return res.json()})
-    .then(data => {
-      this.setState({songs: data})})
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({ songs: data });
+      });
   }
 
   deleteSong(id) {
     fetch(songURL + id, {
-      method: 'DELETE'
-    })
-      .then( res => {
-        if(res.status === 200) {
-          const findIndex = this.state.songs.findIndex(song => song._id === id)
-          const copySongs = [...this.state.songs]
-          copySongs.splice(findIndex, 1)
-          this.setState({
-            songs: copySongs
-          })
-        }
-      })
+      method: "DELETE",
+    }).then((res) => {
+      if (res.status === 200) {
+        const findIndex = this.state.songs.findIndex((song) => song._id === id);
+        const copySongs = [...this.state.songs];
+        copySongs.splice(findIndex, 1);
+        this.setState({
+          songs: copySongs,
+        });
+      }
+    });
   }
 
   toggleEditSong(song) {
-    console.log('test')
-    this.setState({showFormSong: !this.state.showFormSong, selectedSong: song}, () => {this.getSongs()})
+    console.log("test");
+    this.setState(
+      { showFormSong: !this.state.showFormSong, selectedSong: song },
+      () => {
+        this.getSongs();
+      }
+    );
   }
 
   render() {
-    if(this.state.showFormSong) {
+    if (this.state.showFormSong) {
       return (
-        <EditSong toggleEditSong={this.toggleEditSong} song={this.state.selectedSong} />
-      )
+        <EditSong
+          toggleEditSong={this.toggleEditSong}
+          song={this.state.selectedSong}
+        />
+      );
     } else if (this.state.showFormMovie) {
       return (
-        <EditMovie toggleEditMovie={this.toggleEditMovie} movie= {this.state.selectedMovie} />
-      )
-    } else {return (
-      <div className="body">
-        <h1>My favorite things</h1>
-        <h3>Favorite Songs</h3>
-        <SongForm  getSongs={() => this.getSongs()}/>
-        <table>
-          <tbody>
-            { this.state.songs.map(song => {
-              return (
-                  <tr key={song._id} >
+        <EditMovie
+          toggleEditMovie={this.toggleEditMovie}
+          movie={this.state.selectedMovie}
+        />
+      );
+    } else {
+      return (
+        <div className="body">
+          <h1>My Favorite Things</h1>
+          <h3>Favorite Songs</h3>
+          <SongForm getSongs={() => this.getSongs()} />
+          <br></br>
+
+          <Table striped>
+            <tbody>
+              <tr>
+                <th>Artist</th>
+                <th>Song Title</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            
+              {this.state.songs.map((song) => {
+                return (
+                  <tr key={song._id}>
                     <td>{song.artist}</td>
                     <td>{song.song}</td>
-                    <td><button onClick={() => this.toggleEditSong(song)} >&#9997;</button></td>
-                    <td><button onDoubleClick={() => this.deleteSong(song._id)}>&#128465;</button></td>
+                    <td>
+                      <button onClick={() => this.toggleEditSong(song)}>
+                        &#9997;
+                      </button>
+                    </td>
+                    <td>
+                      <button onDoubleClick={() => this.deleteSong(song._id)}>
+                        &#128465;
+                      </button>
+                    </td>
                   </tr>
-              )
-            })
-            }
-          </tbody>
-        </table>
-        <h3>Favorite Movies</h3>
-        <Movieform getMovie = { () => this.getMovie() } />
-        <table>
-          <tbody>
-            {this.state.movies.map(movie => {
-              return (
-                <tr key={movie._id}>
-                  <td>{movie.title}</td>
-                  <td>{movie.year}</td>
-                  <td>{movie.director}</td>
-                  <td>{movie.category}</td>
-                  <td><button onClick={() => this.toggleEditMovie(movie)}>&#9997;</button></td>
-                  <td><button onDoubleClick={() => this.deleteMovie(movie._id)}>&#128465;</button></td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      </div>
-    )}
-    
+                );
+              })}
+            </tbody>
+          </Table>
+          <h3>Search For Movie</h3>
+          <SearchMovie />
+          <h3>Add Favorite Movies</h3>
+          <Movieform getMovie={() => this.getMovie()} />
+          <br></br>
+
+          <Table striped>
+            <tbody>
+              <tr>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Category</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            
+              {this.state.movies.map((movie) => {
+                return (
+                  <tr key={movie._id}>
+                    <td>{movie.title}</td>
+                    <td>{movie.year}</td>
+                    <td>{movie.director}</td>
+                    <td>{movie.category}</td>
+                    <td>
+                      <button onClick={() => this.toggleEditMovie(movie)}>
+                        &#9997;
+                      </button>
+                    </td>
+                    <td>
+                      <button onDoubleClick={() => this.deleteMovie(movie._id)}>
+                        &#128465;
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        </div>
+      );
+    }
   }
 }

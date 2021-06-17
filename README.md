@@ -15,6 +15,10 @@ The objective of this project was to build a front end single page application u
 Add a like button
 Add CSS framework like Bootstrap or Skeleton
 
+<h2>Future Improvements</h2>
+
+Fix bug with like button - when updating an item, all likes are refreshed.
+
 <h2>Creators</h2>
 
 Matan Mizrahi

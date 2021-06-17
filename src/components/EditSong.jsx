@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === "development") {
   songURL = "http://localhost:3003/songs/";
 } else {
   songURL = "https://stormy-falls-96060.herokuapp.com/songs/";
-}
+};
 
 export default class EditSong extends Component {
   state = {
@@ -38,7 +38,6 @@ export default class EditSong extends Component {
       "Content-Type": "application/json",
     };
     const songId = this.props.song._id;
-    console.log(songId);
     await Axios.put(songURL + `/${songId}`, payLoad, { headers: headers }).then(
       (res) => {
         console.log(res);

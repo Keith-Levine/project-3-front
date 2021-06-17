@@ -2,13 +2,11 @@ import React, { Component } from "react";
 
 let movieURL;
 
-if (process.env.NODE_ENV === 'development') {
-  movieURL = 'http://localhost:3003/movies/';
+if (process.env.NODE_ENV === "development") {
+  movieURL = "http://localhost:3003/movies/";
 } else {
-  movieURL = 'https://stormy-falls-96060.herokuapp.com/movies/';
-};
-
-
+  movieURL = "https://stormy-falls-96060.herokuapp.com/movies/";
+}
 export default class Movieform extends Component {
   constructor(props) {
     super(props);
@@ -55,10 +53,9 @@ export default class Movieform extends Component {
       })
       .catch((error) => console.log({ Error: error }));
   }
-
   render() {
     return (
-      <div className ="moviForm">
+      <div>
         <form className="movie_form" onSubmit={this.handleSubmit}>
           <label htmlFor="title"></label>
           <input
@@ -100,5 +97,5 @@ export default class Movieform extends Component {
         </form>
       </div>
     );
-  };
-};
+  }
+}

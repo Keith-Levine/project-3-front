@@ -131,7 +131,8 @@ export default class App extends Component {
           </Table>
           <h4>Search For Movie</h4>
           <SearchMovie />
-          <h3>Add Favorite Movies</h3>
+          <br></br>
+          <h3 >Add Favorite Movies</h3>
           <Movieform getMovie={() => this.getMovie()} />
           <br></br>
           <Table striped bordered hover size="sm">

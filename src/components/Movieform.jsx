@@ -58,7 +58,7 @@ export default class Movieform extends Component {
 
   render() {
     return (
-      <div>
+      <div className ="moviForm">
         <form className="movie_form" onSubmit={this.handleSubmit}>
           <label htmlFor="title"></label>
           <input

@@ -102,7 +102,7 @@ export default class App extends Component {
           <h3>
               <p>Keep track of your favorite SH★★★★☆T</p>
           </h3>
-          <h3>Favorite Songs</h3>
+          <h3>Add Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />
           <br></br>
           <Table striped bordered hover size="sm" >
@@ -129,7 +129,7 @@ export default class App extends Component {
               })}
             </tbody>
           </Table>
-          <h3>Search For Movie</h3>
+          <h4>Search For Movie</h4>
           <SearchMovie />
           <h3>Add Favorite Movies</h3>
           <Movieform getMovie={() => this.getMovie()} />

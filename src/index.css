@@ -50,7 +50,7 @@ th:nth-child(even) {
 }
 
 body {
-  background-color: rgb(153, 199, 218);
+  background-color: rgb(196, 202, 205);
 }
 
 
@@ -70,3 +70,20 @@ h1{
     0 1px 1px rgba(2, 106, 87, 0.9);
 }
 
+/* .movie {
+ 
+  text-align: left;
+  width:100;
+} */
+
+img {
+  float: left;
+  margin: 0px 15px 15px 0px;
+  width: 10%;
+
+
+}
+.movieForm{
+  text-align: center;
+  position:fixed;
+}

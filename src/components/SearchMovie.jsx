@@ -8,7 +8,7 @@ class SearchMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      baseURL: "http://www.omdbapi.com/?",
+      baseURL: "https://www.omdbapi.com/?",
       apikey: "apikey=" + OMDBApiKey,
       query: "&t=",
       movieTitle: "",

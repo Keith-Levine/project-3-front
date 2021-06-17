@@ -3,36 +3,36 @@ import Axios from "axios";
 
 let songURL;
 
-if (process.env.NODE_ENV === 'development') {
-  songURL = 'http://localhost:3003/songs/';
+if (process.env.NODE_ENV === "development") {
+  songURL = "http://localhost:3003/songs/";
 } else {
-  songURL = 'https://stormy-falls-96060.herokuapp.com/songs/';
-};
+  songURL = "https://stormy-falls-96060.herokuapp.com/songs/";
+}
 
 export default class EditSong extends Component {
   state = {
     artist: "",
     song: "",
-    likes: this.props.song.likes
+    likes: this.props.song.likes,
   };
 
   handleChange(event) {
     this.setState({ [event.currentTarget.id]: event.currentTarget.value });
-  };
+  }
 
   componentDidMount() {
     this.setState({
       artist: this.props.song.artist,
       song: this.props.song.song,
-      likes: this.props.song.likes
+      likes: this.props.song.likes,
     });
-  };
+  }
 
   handleUpdateSong = async (id) => {
     const payLoad = {
       artist: this.state.artist,
       song: this.state.song,
-      likes: this.props.song.likes
+      likes: this.props.song.likes,
     };
     const headers = {
       "Content-Type": "application/json",
@@ -49,6 +49,7 @@ export default class EditSong extends Component {
   render() {
     return (
       <div className="body">
+        <h1>Edit Favorite Song</h1>
         <form onSubmit={() => this.handleUpdateSong()}>
           <label htmlFor="artist"></label>
           <input
@@ -69,6 +70,6 @@ export default class EditSong extends Component {
           <input type="submit" value="Update Song" />
         </form>
       </div>
-    )
+    );
   }
 }

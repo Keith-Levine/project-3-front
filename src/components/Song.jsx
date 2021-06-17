@@ -17,7 +17,6 @@ export default class Song extends Component {
   }
 
   toggleEditSong(song) {
-    console.log("test");
     this.setState(
       { showFormSong: !this.state.showFormSong, selectedSong: song },
       () => {

@@ -100,7 +100,7 @@ export default class App extends Component {
         <div className="body" >
           <h1>Our Favorite SH★★★★☆T</h1>
           <h3>
-              <p>Keep track of your favorite SH★★★★☆T</p>
+              <p>Keep track of your favorite songs and movies!</p>
           </h3>
           <h3>Add Favorite Songs</h3>
           <SongForm getSongs={() => this.getSongs()} />

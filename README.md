@@ -8,7 +8,7 @@ The objective of this project was to build a front end single page application u
 
 <h2>App Link</h2>
 
-[Project 3] (https://sleepy-tor-42367.herokuapp.com/)
+[Project 3](https://sleepy-tor-42367.herokuapp.com/)
 
 <h2>Stretch Goals</h2>
 
